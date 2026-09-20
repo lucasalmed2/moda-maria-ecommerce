@@ -1,0 +1,56 @@
+// Schema do banco de dados - Loja Moda Maria
+// Rode "npx prisma migrate dev" depois de configurar o DATABASE_URL no .env
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Login de administrador (sua prima gerencia o catálogo por aqui)
+model Admin {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String   // sempre salvo com hash (bcrypt), nunca em texto puro
+  createdAt DateTime @default(now())
+}
+
+// Categorias: ex. "Vestidos", "Fitness", "Blusas"
+model Category {
+  id       String    @id @default(uuid())
+  name     String    @unique
+  slug     String    @unique // usado na URL, ex: /categoria/vestidos
+  products Product[]
+}
+
+// Produto = a peça de roupa em si (informações que não mudam por tamanho/cor)
+model Product {
+  id          String           @id @default(uuid())
+  name        String
+  description String
+  price       Decimal          @db.Decimal(10, 2)
+  images      String[]         // URLs das imagens (Cloudinary)
+  active      Boolean          @default(true) // permite "esconder" sem deletar
+  categoryId  String
+  category    Category         @relation(fields: [categoryId], references: [id])
+  variants    ProductVariant[]
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+}
+
+// Variação = combinação específica de tamanho + cor, com seu próprio estoque
+model ProductVariant {
+  id        String  @id @default(uuid())
+  size      String  // ex: "P", "M", "G" ou "36", "38", "40"
+  color     String  // ex: "Preto", "Rosa"
+  stock     Int     @default(0)
+  sku       String  @unique // código interno, útil pra controle de estoque
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, size, color]) // evita duplicar a mesma variação
+}
