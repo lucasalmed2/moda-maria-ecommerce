@@ -46,16 +46,16 @@ export default function ProductDetail() {
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-10">
-      <Link to="/" className="text-sm text-blush-500 hover:underline">
+      <Link to="/" className="text-sm text-cream-500 hover:underline">
         ← Voltar para a loja
       </Link>
 
       <div className="grid md:grid-cols-2 gap-10 mt-6">
-        <div className="aspect-[3/4] bg-blush-100 rounded-2xl overflow-hidden">
+        <div className="aspect-[3/4] bg-cream-100 rounded-2xl overflow-hidden">
           {product.images?.[0] ? (
             <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover" />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-blush-300 font-display text-xl">
+            <div className="w-full h-full flex items-center justify-center text-cream-300 font-display text-xl">
               Moda Maria
             </div>
           )}
@@ -63,7 +63,7 @@ export default function ProductDetail() {
 
         <div>
           <h1 className="font-display text-2xl text-gray-800">{product.name}</h1>
-          <p className="text-blush-600 text-xl font-semibold mt-2">{formatPrice(product.price)}</p>
+          <p className="text-cream-600 text-xl font-semibold mt-2">{formatPrice(product.price)}</p>
           <p className="text-gray-500 mt-4 text-sm leading-relaxed">{product.description}</p>
 
           <div className="mt-6">
@@ -75,8 +75,8 @@ export default function ProductDetail() {
                   onClick={() => setSelectedSize(size)}
                   className={`w-10 h-10 rounded-full border text-sm transition-colors ${
                     selectedSize === size
-                      ? 'bg-blush-500 text-white border-blush-500'
-                      : 'border-blush-200 text-gray-600 hover:bg-blush-50'
+                      ? 'bg-cream-500 text-white border-cream-500'
+                      : 'border-cream-200 text-gray-600 hover:bg-cream-50'
                   }`}
                 >
                   {size}
@@ -94,8 +94,8 @@ export default function ProductDetail() {
                   onClick={() => setSelectedColor(color)}
                   className={`px-4 py-1.5 rounded-full border text-sm transition-colors ${
                     selectedColor === color
-                      ? 'bg-blush-500 text-white border-blush-500'
-                      : 'border-blush-200 text-gray-600 hover:bg-blush-50'
+                      ? 'bg-cream-500 text-white border-cream-500'
+                      : 'border-cream-200 text-gray-600 hover:bg-cream-50'
                   }`}
                 >
                   {color}
@@ -111,7 +111,7 @@ export default function ProductDetail() {
           <button
             onClick={handleAddToCart}
             disabled={!selectedVariant || selectedVariant.stock === 0}
-            className="mt-8 w-full bg-blush-500 hover:bg-blush-600 disabled:bg-gray-200 disabled:cursor-not-allowed transition-colors text-white py-3 rounded-full font-medium"
+            className="mt-8 w-full bg-cream-500 hover:bg-cream-600 disabled:bg-gray-200 disabled:cursor-not-allowed transition-colors text-white py-3 rounded-full font-medium"
           >
             {added ? 'Adicionado ✓' : 'Adicionar ao carrinho'}
           </button>

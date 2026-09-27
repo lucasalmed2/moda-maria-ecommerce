@@ -18,8 +18,8 @@ export default function CartDrawer({ open, onClose }) {
       <div className="absolute inset-0 bg-black/30" onClick={onClose} />
 
       <div className="relative w-full max-w-sm bg-white h-full shadow-xl flex flex-col">
-        <div className="flex items-center justify-between p-5 border-b border-blush-100">
-          <h2 className="font-display text-xl text-blush-700">Seu carrinho</h2>
+        <div className="flex items-center justify-between p-5 border-b border-cream-100">
+          <h2 className="font-display text-xl text-cream-700">Seu carrinho</h2>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-2xl leading-none">
             &times;
           </button>
@@ -40,14 +40,14 @@ export default function CartDrawer({ open, onClose }) {
                 <div className="flex items-center gap-2 mt-2">
                   <button
                     onClick={() => updateQuantity(item.variantId, item.quantity - 1)}
-                    className="w-6 h-6 rounded-full bg-blush-100 text-blush-700 text-sm"
+                    className="w-6 h-6 rounded-full bg-cream-100 text-cream-700 text-sm"
                   >
                     −
                   </button>
                   <span className="text-sm w-4 text-center">{item.quantity}</span>
                   <button
                     onClick={() => updateQuantity(item.variantId, item.quantity + 1)}
-                    className="w-6 h-6 rounded-full bg-blush-100 text-blush-700 text-sm"
+                    className="w-6 h-6 rounded-full bg-cream-100 text-cream-700 text-sm"
                   >
                     +
                   </button>
@@ -69,7 +69,7 @@ export default function CartDrawer({ open, onClose }) {
         </div>
 
         {items.length > 0 && (
-          <div className="p-5 border-t border-blush-100 space-y-3">
+          <div className="p-5 border-t border-cream-100 space-y-3">
             <div className="flex justify-between font-semibold text-gray-800">
               <span>Total</span>
               <span>{formatPrice(total)}</span>

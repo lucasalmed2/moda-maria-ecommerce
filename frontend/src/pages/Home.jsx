@@ -27,8 +27,8 @@ export default function Home() {
   return (
     <main className="max-w-6xl mx-auto px-4 py-10">
       <section className="text-center mb-10">
-        <h1 className="font-display text-3xl md:text-4xl text-blush-700">
-          Moda <span className="text-gold-500">Maria</span>
+        <h1 className="font-display text-3xl md:text-4xl text-cream-700">
+          Moda <span className="text-caramel-500">Maria</span>
         </h1>
         <p className="text-gray-500 mt-2">Peças femininas selecionadas com carinho ✨</p>
       </section>
@@ -38,8 +38,8 @@ export default function Home() {
           onClick={() => setActiveCategory(null)}
           className={`px-4 py-1.5 rounded-full text-sm border transition-colors ${
             activeCategory === null
-              ? 'bg-blush-500 text-white border-blush-500'
-              : 'border-blush-200 text-blush-600 hover:bg-blush-50'
+              ? 'bg-cream-500 text-white border-cream-500'
+              : 'border-cream-200 text-cream-600 hover:bg-cream-50'
           }`}
         >
           Todos
@@ -50,8 +50,8 @@ export default function Home() {
             onClick={() => setActiveCategory(category.slug)}
             className={`px-4 py-1.5 rounded-full text-sm border transition-colors ${
               activeCategory === category.slug
-                ? 'bg-blush-500 text-white border-blush-500'
-                : 'border-blush-200 text-blush-600 hover:bg-blush-50'
+                ? 'bg-cream-500 text-white border-cream-500'
+                : 'border-cream-200 text-cream-600 hover:bg-cream-50'
             }`}
           >
             {category.name}
